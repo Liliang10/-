@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Diyah Wedding</title>
+</head>
+<body class="bg-[#FCE3DF]">
+
+    <header class="fixed top-0 w-full z-50 px-4 md:px-6">
+        <nav id="main-nav" class="max-w-6xl mx-auto bg-transparent backdrop-blur-none border border-transparent py-3 px-4 md:px-6 rounded-2xl transition-all duration-300 mt-4 md:mt-6 flex items-center justify-between">
+
+            <div class="flex items-center">
+                <img src="images/logoB.png" alt="logo" class="h-6 lg:h-9">
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <ul class="flex space-x-8 text-md font-semibold text-white tracking-wide">
+                    
+                    <li class="relative group">
+                        <button class="hover:text-[#FCE3DF] transition flex items-center gap-1 focus:outline-none pb-2">
+                            Browse
+                            <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div class="absolute left-0 pt-2 w-48 hidden group-hover:block z-50">
+                            <div class="bg-white rounded-xl shadow-lg border border-rose-50 p-2 animate-fadeIn">
+                                <ul class="space-y-1 text-sm font-semibold text-gray-700">
+                                    <li><a href="index.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Home</a></li>
+                                    <li><a href="paket.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Paket</a></li>
+                                    <li><a href="gallery.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Gallery</a></li>
+                                    <li><a href="form.html" class="block px-4 py-2 rounded-lg hover:bg-[#FCE3DF]/40 hover:text-[#59090B] transition">Form</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="#services" class="hover:text-[#FCE3DF] transition">Services</a></li>
+                    <li><a href="#" class="hover:text-[#FCE3DF] transition">Testimonials</a></li>
+                    
+                    <li>
+                        <a href="https://wa.me/6285126464456?text=Halo%20Admin%20saya%20tertarik%20untuk%20order%20paket%20pernikahan%20setelah%20melihat%20dari%20Website." 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="hover:text-[#FCE3DF] transition">
+                           Contact us
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="flex items-center space-x-4 text-white">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#FCE3DF] transition" aria-label="Facebook">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#FCE3DF] transition" aria-label="Instagram">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 9a3.25 3.25 0 110 6.5 3.25 3.25 0 010-6.5zm5.25-1a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#FCE3DF] transition" aria-label="Twitter">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button id="menu-toggle-btn" class="text-white focus:outline-none p-1.5 hover:text-[#FCE3DF] transition-colors" aria-label="Toggle Menu">
+                    <svg id="hamburger-icon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+        </nav>
+
+        <div id="mobile-menu" class="hidden absolute inset-x-4 top-20 bg-white/95 backdrop-blur-md border border-rose-100 p-6 rounded-2xl shadow-xl flex-col space-y-4 md:hidden z-50 transition-all duration-300 transform origin-top scale-y-95 opacity-0">
+        
+            <ul class="flex flex-col space-y-3 text-[15px] font-bold text-gray-800 tracking-wide">
+                <li class="text-xs font-semibold text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-1 mb-1">Browse</li>
+                <li><a href="index.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">Home</a></li>
+                <li><a href="paket.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">List Paket</a></li>
+                <li><a href="gallery.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">Gallery</a></li>
+                <li><a href="form.html" class="block py-1 hover:text-[#59090B] pl-2 border-l-2 border-transparent hover:border-[#59090B] transition">Form Booking</a></li>
+                
+                <li class="text-xs font-semibold text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-1 pt-2 mb-1">More</li>
+                <li><a href="#services" class="block py-1 hover:text-[#59090B] transition">Services</a></li>
+                <li><a href="#" class="block py-1 hover:text-[#59090B] transition">Testimonials</a></li>
+                
+                <li>
+                    <a href="https://wa.me/6285126464456?text=Halo%20Admin%20saya%20tertarik%20untuk%20order%20paket%20pernikahan%20setelah%20melihat%20dari%20Website." 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="block py-1 hover:text-[#59090B] transition">
+                       Contact us
+                    </a>
+                </li>
+            </ul>
+
+            <div class="flex items-center space-x-5 pt-3 border-t border-gray-100 text-gray-600">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Facebook">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Instagram">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 9a3.25 3.25 0 110 6.5 3.25 3.25 0 010-6.5zm5.25-1a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Twitter">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center px-4" style="background-image: url('images/Dekorasi3.jpeg');">
+
+        <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto mb-20 flex flex-col items-center">
+
+            <h1 class="text-4xl md:text-5xl font-bold text-white tracking-wide uppercase mb-4 drop-shadow-md">
+                Welcome to Diyah Wedding
+            </h1>
+            
+            <p class="text-sm md:text-lg text-gray-200 max-w-2xl mx-auto font-light tracking-wide leading-relaxed drop-shadow mb-8">
+                Penyedia jasa sewa tenda eksklusif dan dekorasi pernikahan impian dengan sentuhan elegan, sakral, dan tidak terlupakan. Mari abadikan momen bahagia bersama kami.
+            </p>
+
+            <a href="paket.html" class="px-6 py-3 bg-[#59090B] text-white font-semibold rounded-full shadow-lg hover:bg-[#420608] transition duration-300 text-sm md:text-base flex items-center gap-2 transform hover:scale-105">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+                Lihat Paket Dekorasi & Tenda
+            </a>
+
+        </div>
+
+        <div id="wedding-popup" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-all duration-300">
+            
+            <div class="bg-[#FCE3DF] rounded-2xl max-w-md w-full p-6 md:p-8 shadow-2xl relative text-left border border-[#59090B]/10 transform scale-95 transition-all duration-300" id="popup-content">
+                
+                <button id="close-popup-btn" class="absolute top-4 right-4 text-gray-500 hover:text-[#59090B] transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <h3 class="text-xl md:text-2xl font-bold text-[#59090B] mb-3 flex items-center gap-2">
+                    ✨ Bonus Undangan Digital Premium
+                </h3>
+
+                <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-6 font-normal">
+                    Dapatkan fasilitas eksklusif <strong>Undangan Digital Gratis</strong> untuk setiap pemesanan Paket Tenda & Dekorasi di Diyah Wedding! Bagikan momen bahagia Anda secara modern, cepat, dilengkapi musik latar romantis, galeri foto, hingga konfirmasi kehadiran (RSVP) interaktif.
+                </p>
+
+                <div class="flex flex-col gap-3">
+                    <a href="undangan.html" class="w-full py-3 bg-[#59090B] text-white text-center font-bold rounded-xl hover:bg-[#420608] transition duration-300 shadow-md text-sm md:text-base block">
+                        Lihat Contoh Undangan Digital
+                    </a>
+                    
+                    <button id="close-popup-text-btn" class="w-full py-2.5 bg-transparent text-[#59090B] text-center font-medium rounded-xl hover:bg-[#59090B]/5 transition text-sm">
+                        Lanjutkan ke Penyewaan Tenda
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
+
+    <section id="browse" class="py-20 px-4 md:px-6">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#59090B] tracking-wide uppercase mb-2">
+                    Gallery
+                </h2>
+                <p class="text-sm md:text-base text-[#59090B]/60 font-medium tracking-wide">
+                    that you will remember forever
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 md:h-96">
+                    <img src="images/Tenda1.jpeg" alt="Tenda 1" class="slide-tenda absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 group-hover:scale-105">
+                    <img src="images/Tenda2.jpeg" alt="Tenda 2" class="slide-tenda absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Tenda3.jpeg" alt="Tenda 2" class="slide-tenda absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Tenda4.jpeg" alt="Tenda 2" class="slide-tenda absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Tenda5.jpeg" alt="Tenda 2" class="slide-tenda absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Tenda6.jpeg" alt="Tenda 2" class="slide-tenda absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-20 pb-6 px-6 z-10">
+                        <h3 class="text-white font-semibold text-lg tracking-wide text-center">Tenda Pernikahan</h3>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-2xl shadow-md h-80 md:h-96">
+                    <img src="images/Dekorasi1.jpeg" alt="Dekorasi 1" class="slide-dekor absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 group-hover:scale-105">
+                    <img src="images/Dekorasi2.jpeg" alt="Dekorasi 2" class="slide-dekor absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Dekorasi3.jpeg" alt="Dekorasi 2" class="slide-dekor absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Dekorasi4.jpeg" alt="Dekorasi 2" class="slide-dekor absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Dekorasi5.jpeg" alt="Dekorasi 2" class="slide-dekor absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    <img src="images/Dekorasi6.jpeg" alt="Dekorasi 2" class="slide-dekor absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:scale-105">
+                    
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent pt-20 pb-6 px-6 z-10">
+                        <h3 class="text-white font-semibold text-lg tracking-wide text-center">Dekorasi Pelaminan</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="gallery.html" class="inline-block text-[#59090B] font-semibold text-sm md:text-base tracking-wide border border-[#59090B]/30 px-6 py-3 rounded-full bg-white shadow-sm transition duration-300 hover:bg-[#59090B] hover:text-white">
+                    Lihat Selengkapnya
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="services" class="py-20 px-4 md:px-6">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#59090B] tracking-wide uppercase mb-2">
+                    Pilihan Layanan Terbaik
+                </h2>
+                <p class="text-sm md:text-base text-[#59090B]/60 font-medium tracking-wide">
+                    Silakan pilih kategori paket yang sesuai dengan kebutuhan pernikahan impian Anda
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                
+                <a href="paket.html#tenda-package" class="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="images/gallery1.png" alt="Paket Tenda" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between text-center">
+                        <div>
+                            <h3 class="text-xl font-bold text-[#59090B] tracking-wide mb-2">
+                                Paket Tenda
+                            </h3>
+                            <p class="text-xs text-gray-500 leading-relaxed font-medium px-2">
+                                Solusi sewa tenda eksklusif, panggung kokoh, dan perlengkapan pesta lengkap untuk kenyamanan para tamu undangan.
+                            </p>
+                        </div>
+                        <span class="mt-6 inline-block text-xs font-bold text-[#59090B] tracking-wider uppercase border border-[#59090B]/30 px-4 py-2 rounded-full bg-white group-hover:bg-[#59090B] group-hover:text-white transition-colors duration-300">
+                            Lihat Paket Tenda &rarr;
+                        </span>
+                    </div>
+                </a>
+
+                <a href="paket.html#decoration-package" class="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="images/venues.png" alt="Paket Dekorasi" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between text-center">
+                        <div>
+                            <h3 class="text-xl font-bold text-[#59090B] tracking-wide mb-2">
+                                Paket Dekorasi
+                            </h3>
+                            <p class="text-xs text-gray-500 leading-relaxed font-medium px-2">
+                                Dekorasi pelaminan premium, taman bunga segar, set akad nikah estetik, dan standing photo romantis khas modern.
+                            </p>
+                        </div>
+                        <span class="mt-6 inline-block text-xs font-bold text-[#59090B] tracking-wider uppercase border border-[#59090B]/30 px-4 py-2 rounded-full bg-white group-hover:bg-[#59090B] group-hover:text-white transition-colors duration-300">
+                            Lihat Paket Dekor &rarr;
+                        </span>
+                    </div>
+                </a>
+
+                <a href="paket.html#silver-package" class="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-[#59090B]/20 relative">
+                    <div class="absolute top-3 right-3 bg-[#59090B] text-white text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10 shadow-sm">
+                        All In One
+                    </div>
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="images/gallery2.png" alt="Paket Silver All In" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between text-center">
+                        <div>
+                            <h3 class="text-xl font-bold text-[#59090B] tracking-wide mb-2">
+                                Paket Lengkap (Silver)
+                            </h3>
+                            <p class="text-xs text-gray-500 leading-relaxed font-medium px-2">
+                                Paket pernikahan komplit tanpa ribet. Sudah termasuk Tenda, Dekorasi Pelaminan, Tata Rias Busana, hingga Sound System.
+                            </p>
+                        </div>
+                        <span class="mt-6 inline-block text-xs font-bold text-white tracking-wider uppercase px-4 py-2 rounded-full bg-[#59090B] group-hover:bg-[#400608] transition-colors duration-300 shadow-sm">
+                            Lihat Paket Silver &rarr;
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-transparent pt-20 pb-0 px-4 mb-20 md:px-6 relative">
+        <div class="max-w-6xl mx-auto bg-white rounded-3xl p-8 md:p-12 flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-8 shadow-sm">
+        
+            <div class="w-full lg:w-1/4 pt-2">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#59090B] tracking-wide uppercase mb-3">
+                    Bonus
+                </h2>
+                <p class="text-sm md:text-base text-gray-500 font-medium leading-relaxed">
+                    to plan and orchestrate <br class="hidden sm:inline">your special occasion
+                </p>
+            </div>
+
+            <div class="w-full lg:w-3/4 relative -mb-24 z-10">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    
+                    <div class="bg-[#FFFBFB] p-5 rounded-2xl shadow-xl border border-gray-100 flex flex-col justify-between aspect-[4/5] max-w-[280px] w-full mx-auto lg:mx-0 hover:-translate-y-2 transition duration-300">
+                        <div class="w-full aspect-square bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
+                            <img src="images/bonus1.png" alt="Undangan Digital" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-center font-semibold text-[#59090B] text-sm md:text-base tracking-wide mt-4">
+                            Undangan Digital
+                        </p>
+                    </div>
+
+                    <div class="bg-[#FFFBFB] p-5 rounded-2xl shadow-xl border border-gray-100 flex flex-col justify-between aspect-[4/5] max-w-[280px] w-full mx-auto lg:mx-0 hover:-translate-y-2 transition duration-300">
+                        <div class="w-full aspect-square bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
+                            <img src="images/bonus2.png" alt="Free Survei Lokasi" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-center font-semibold text-[#59090B] text-sm md:text-base tracking-wide mt-4">
+                            Free Survei Lokasi
+                        </p>
+                    </div>
+
+                    <div class="bg-[#FFFBFB] p-5 rounded-2xl shadow-xl border border-gray-100 flex flex-col justify-between aspect-[4/5] max-w-[280px] w-full mx-auto lg:mx-0 hover:-translate-y-2 transition duration-300">
+                        <div class="w-full aspect-square bg-gray-50 rounded-xl overflow-hidden border border-gray-100">
+                            <img src="images/bonus3.png" alt="Free Konsultasi Konsep" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-center font-semibold text-[#59090B] text-sm md:text-base tracking-wide mt-4">
+                            Free Konsultasi Konsep
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="our-venue" class="bg-transparent py-20 px-4 md:px-6">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#59090B] tracking-wide uppercase">
+                    Our Venue
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                
+                <div class="relative group overflow-hidden rounded-3xl shadow-md w-full aspect-video">
+                    <img src="images/venue1.png" alt="Simple Decoration Package" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent pt-16 pb-6 px-4 text-center">
+                        <h3 class="text-white font-semibold text-base md:text-lg tracking-wide">
+                            Simple Decoration Package
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-3xl shadow-md w-full aspect-video">
+                    <img src="images/venue2.png" alt="Premium Tenda Package" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent pt-16 pb-6 px-4 text-center">
+                        <h3 class="text-white font-semibold text-base md:text-lg tracking-wide">
+                            Premium Tenda Package
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-3xl shadow-md w-full aspect-video">
+                    <img src="images/venue3.png" alt="Silver Package" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent pt-16 pb-6 px-4 text-center">
+                        <h3 class="text-white font-semibold text-base md:text-lg tracking-wide">
+                            Silver Package
+                        </h3>
+                    </div>
+                </div>
+
+                <a href="#" class="relative group overflow-hidden rounded-3xl shadow-md w-full aspect-video block">
+                    <img src="images/venue4.png" alt="Lihat Selengkapnya" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center transition group-hover:bg-black/50">
+                        <span class="text-white font-medium text-sm md:text-base tracking-wide border border-white/40 px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-sm transition group-hover:bg-white group-hover:text-black group-hover:border-white">
+                            Lihat Selengkapnya
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="testimonials" class="bg-[#59090B] py-20 px-4 md:px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10 px-8">
+            
+            <div class="mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide uppercase mb-2">
+                    Testimonials
+                </h2>
+                <p class="text-sm md:text-base text-[#FCE3DF]/70 font-light tracking-wide italic">
+                    from happy, delighted couples
+                </p>
+            </div>
+
+            <div id="testimonial-container" class="flex flex-col items-center transition-all duration-300 opacity-100 transform scale-100">
+                
+                <p id="testimonial-text" class="text-white text-base md:text-lg font-light leading-relaxed max-w-2xl tracking-wide mb-8 min-h-[120px] sm:min-h-[auto]">
+                    "Terima kasih banyak untuk Diyah Wedding! Pernikahan kami berjalan dengan sangat elegan dan sakral melebihi apa yang kami impikan selama ini. Timnya sangat profesional, dekorasinya luar biasa megah, dan koordinasi di lapangan sangat rapi. Semua tamu memuji keindahan acara kami!"
+                </p>
+
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#FCE3DF] shadow-md mb-4 bg-gray-100">
+                    <img id="testimonial-img" src="images/couple.png" alt="Joy & Jordan" class="w-full h-full object-cover">
+                </div>
+
+                <h3 id="testimonial-name" class="text-[#FCE3DF] font-semibold text-lg tracking-wider">
+                    Joy & Jordan
+                </h3>
+                
+            </div>
+
+            <div id="testimonial-dots" class="flex justify-center space-x-2 mt-8">
+            </div>
+        </div>
+
+        <button id="prev-btn" type="button" class="hidden md:block absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full border border-white/20 backdrop-blur-sm transition duration-300 group" aria-label="Previous Testimonial">
+            <svg class="w-5 h-5 transition group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <button id="next-btn" type="button" class="hidden md:block absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full border border-white/20 backdrop-blur-sm transition duration-300 group" aria-label="Next Testimonial">
+            <svg class="w-5 h-5 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+    </section>
+
+    <footer class="bg-[#59090B] border-t border-white/10 py-6 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            
+            <div class="flex items-center">
+                <img src="images/logoB.png" alt="logo" class="h-6 lg:h-8 brightness-0 invert">
+            </div>
+
+            <ul class="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-[13px] font-medium text-white tracking-wide">
+                <li><a href="#" class="hover:text-[#FCE3DF] transition duration-300">About Us</a></li>
+                <li><a href="#" class="hover:text-[#FCE3DF] transition duration-300">Terms of Service</a></li>
+                <li><a href="#" class="hover:text-[#FCE3DF] transition duration-300">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-[#FCE3DF] transition duration-300">FAQ</a></li>
+            </ul>
+
+            <div class="flex items-center space-x-5 text-white">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#FCE3DF] transition duration-300" aria-label="Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                    </svg>
+                </a>
+
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#FCE3DF] transition duration-300" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 9a3.25 3.25 0 110 6.5 3.25 3.25 0 010-6.5zm5.25-1a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+
+                <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#FCE3DF] transition duration-300" aria-label="Twitter">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (menuToggleBtn && mobileMenu) {
+                menuToggleBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenu.classList.add('flex');
+                        setTimeout(() => {
+                            mobileMenu.classList.remove('scale-y-95', 'opacity-0');
+                            mobileMenu.classList.add('scale-y-100', 'opacity-100');
+                        }, 10);
+                        
+                        if (hamburgerIcon) hamburgerIcon.classList.replace('block', 'hidden');
+                        if (closeIcon) closeIcon.classList.replace('hidden', 'block');
+                    } else {
+                        mobileMenu.classList.remove('scale-y-100', 'opacity-100');
+                        mobileMenu.classList.add('scale-y-95', 'opacity-0');
+                        
+                        setTimeout(() => {
+                            mobileMenu.classList.remove('flex');
+                            mobileMenu.classList.add('hidden');
+                        }, 300);
+                        
+                        if (hamburgerIcon) hamburgerIcon.classList.replace('hidden', 'block');
+                        if (closeIcon) closeIcon.classList.replace('block', 'hidden');
+                    }
+                });
+            }
+
+            const testimonialsData = [
+                {
+                    text: `"Terima kasih banyak untuk Diyah Wedding! Pernikahan kami berjalan dengan sangat elegan dan sakral melebihi apa yang kami impikan selama ini. Timnya sangat profesional, dekorasinya luar biasa megah, dan koordinasi di lapangan sangat rapi. Semua tamu memuji keindahan acara kami!"`,
+                    image: "images/couple.png",
+                    name: "Joy & Jordan"
+                },
+                {
+                    text: `"Sangat puas dengan pelayanan Diyah Wedding. Mulai dari perencanaan H-6 bulan sampai hari H selalu fast-respons. Gaunnya cantik-cantik, make up-nya flawless banget awet seharian tanpa luntur. Highly recommended buat calon pengantin!"`,
+                    image: "images/couple.png",
+                    name: "Anisa & Rizky"
+                },
+                {
+                    text: `"Keluarga besar kami sangat mengapresiasi kerja keras tim WO. Kateringnya enak dan penyajiannya rapi, alur tamu mengalir lancar meskipun yang datang membludak. Terima kasih sudah mewujudkan pernikahan impian kami tanpa stres!"`,
+                    image: "images/couple.png",
+                    name: "Citra & David"
+                }
+            ];
+
+            let currentIndex = 0;
+
+            const textEl = document.getElementById('testimonial-text');
+            const imgEl = document.getElementById('testimonial-img');
+            const nameEl = document.getElementById('testimonial-name');
+            const containerEl = document.getElementById('testimonial-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dotsContainer = document.getElementById('testimonial-dots');
+
+            function createDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                testimonialsData.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#FCE3DF] w-6' : 'bg-white/30 hover:bg-white/50'}`;
+                    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                    dot.addEventListener('click', () => updateTestimonial(index));
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function updateTestimonial(index) {
+                if (!containerEl) return;
+                containerEl.classList.remove('opacity-100', 'scale-100');
+                containerEl.classList.add('opacity-0', 'scale-95');
+
+                setTimeout(() => {
+                    currentIndex = index;
+                    
+                    if(textEl) textEl.innerHTML = testimonialsData[currentIndex].text;
+                    if(imgEl) {
+                        imgEl.src = testimonialsData[currentIndex].image;
+                        imgEl.alt = testimonialsData[currentIndex].name;
+                    }
+                    if(nameEl) nameEl.innerHTML = testimonialsData[currentIndex].name;
+
+                    containerEl.classList.remove('opacity-0', 'scale-95');
+                    containerEl.classList.add('opacity-100', 'scale-100');
+                    
+                    createDots();
+                }, 250);
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex >= testimonialsData.length) nextIndex = 0;
+                    updateTestimonial(nextIndex);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    let prevIndex = currentIndex - 1;
+                    if (prevIndex < 0) prevIndex = testimonialsData.length - 1;
+                    updateTestimonial(prevIndex);
+                });
+            }
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            if (containerEl) {
+                containerEl.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+
+                containerEl.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const swipeThreshold = 50;
+                    if (touchStartX - touchEndX > swipeThreshold) {
+                        if (nextBtn) nextBtn.click();
+                    } else if (touchEndX - touchStartX > swipeThreshold) {
+                        if (prevBtn) prevBtn.click();
+                    }
+                });
+            }
+
+            createDots();
+
+            const popup = document.getElementById('wedding-popup');
+            const popupContent = document.getElementById('popup-content');
+            const closeBtn = document.getElementById('close-popup-btn');
+            const closeTextBtn = document.getElementById('close-popup-text-btn');
+
+            function showPopup() {
+                if (popup && popupContent) {
+                    popup.classList.remove('hidden');
+                    popup.classList.add('flex');
+                    setTimeout(() => {
+                        popup.classList.remove('opacity-0');
+                        popupContent.classList.remove('scale-95');
+                        popupContent.classList.add('scale-100');
+                    }, 50);
+                }
+            }
+
+            function closePopup() {
+                if (popup && popupContent) {
+                    popup.classList.add('opacity-0');
+                    popupContent.classList.remove('scale-100');
+                    popupContent.classList.add('scale-95');
+                    setTimeout(() => {
+                        popup.classList.remove('flex');
+                        popup.classList.add('hidden');
+                    }, 300);
+                }
+            }
+
+            showPopup();
+
+            if (closeBtn) closeBtn.addEventListener('click', closePopup);
+            if (closeTextBtn) closeTextBtn.addEventListener('click', closePopup);
+            if (popup) {
+                popup.addEventListener('click', function (e) {
+                    if (e.target === popup) {
+                        closePopup();
+                    }
+                });
+            }
+
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+        function startAutoSlider(className, intervalTime) {
+            const slides = document.querySelectorAll('.' + className);
+            let currentSlide = 0;
+
+            setInterval(() => {
+                slides[currentSlide].classList.remove('opacity-100');
+                slides[currentSlide].classList.add('opacity-0');
+
+                currentSlide = (currentSlide + 1) % slides.length;
+
+                slides[currentSlide].classList.remove('opacity-0');
+                slides[currentSlide].classList.add('opacity-100');
+            }, intervalTime);
+        }
+
+        startAutoSlider('slide-tenda', 3000);
+        startAutoSlider('slide-dekor', 3500);
+    });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <title>The Wedding of Kiko & Cici - Cute Cartoon Style</title>
+    <style>
+        .font-bubble { font-family: 'Fredoka', sans-serif; }
+        .font-hand { font-family: 'Patrick Hand', cursive; }
+    </style>
+</head>
+<body class="bg-[#FFF5F5] text-[#634444] font-bubble min-h-screen overflow-x-hidden">
+
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2025/11/07/audio_9c1b7e3a2f.mp3?filename=wedding-romantic-background-music-369602.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="cover-section" class="fixed inset-0 z-50 bg-[#FFEAEA] flex flex-col justify-between items-center py-16 px-6 text-center transition-all duration-1000 ease-in-out">
+        <div class="space-y-2">
+            <span class="bg-[#FFB4B4] text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-sm">Pernikahan Impian</span>
+            <h1 class="text-3xl md:text-4xl font-bold text-[#FF6B6B] mt-2">Kiko & Cici</h1>
+        </div>
+        
+        <div class="space-y-3 bg-white/60 p-6 rounded-2xl border-2 border-dashed border-[#FFB4B4] max-w-sm w-full shadow-sm">
+            <p class="text-xs uppercase tracking-wide text-gray-500">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+            <p id="nama-tamu-cover" class="font-hand text-3xl font-bold text-[#634444]">Tamu Undangan Spesial</p>
+            <p class="text-[11px] text-gray-400 italic">*Mohon maaf bila ada kesalahan penulisan nama/gelar</p>
+        </div>
+
+        <button id="btn-buka" class="px-8 py-3 bg-[#FF6B6B] text-white font-bold rounded-full shadow-lg hover:bg-[#FF5252] hover:scale-105 transition-all duration-300 flex items-center gap-2 animate-bounce">
+            💌 Buka Undangan
+        </button>
+    </div>
+
+    <main class="max-w-md mx-auto bg-white min-h-screen shadow-xl pb-12 border-x-4 border-[#FFEAEA]">
+        
+        <section class="relative bg-[#FFEAEA] py-16 text-center px-4 rounded-b-[3rem] shadow-inner">
+            <h2 class="font-hand text-4xl text-[#FF6B6B] mb-2">The Wedding of</h2>
+            <h3 class="text-4xl font-extrabold text-[#634444] tracking-wide">Kiko & Cici</h3>
+            <p class="text-sm text-[#FF8E8E] font-medium mt-1">Sabtu, 17 Oktober 2026</p>
+            
+            <div class="w-44 h-44 mx-auto mt-6 bg-[#FFF5F5] p-3 rounded-full border-4 border-white shadow-md overflow-hidden">
+                <img src="images/cartoon_couple.png" alt="Kiko & Cici" class="w-full h-full object-cover rounded-full">
+            </div>
+        </section>
+
+        <section class="p-8 text-center space-y-4">
+            <div class="text-2xl text-[#FF6B6B]">✨🌸✨</div>
+            <p class="text-xs italic leading-relaxed text-gray-500">
+                "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+            </p>
+            <p class="text-xs font-bold text-[#FF8E8E] uppercase tracking-wider">( QS. Ar-Rum: 21 )</p>
+        </section>
+
+        <section class="p-6 space-y-8 bg-[#FFF5F5]/40">
+            <div class="text-center">
+                <h4 class="font-hand text-3xl text-[#FF6B6B]">Mempelai Bahagia</h4>
+                <p class="text-xs text-gray-400 mt-1">Dengan memohon rahmat Allah SWT, kami mengundang Anda di pernikahan kami</p>
+            </div>
+
+            <div class="text-center space-y-3">
+                <div class="w-28 h-28 mx-auto rounded-full border-4 border-[#FFB4B4] overflow-hidden bg-white shadow">
+                    <img src="images/groom.png" alt="Kiko" class="w-full h-full object-cover">
+                </div>
+                <h5 class="text-xl font-bold text-[#634444]">Rizky Aditya, S.Kom (Kiko)</h5>
+                <p class="text-xs text-gray-500 px-4">Putra pertama dari Bapak Bambang Wijaya & Ibu Endang Sulastri</p>
+                <div class="flex justify-center gap-2 text-xs text-[#FF6B6B]">
+                    <span>📸 @kiko_dummy</span>
+                </div>
+            </div>
+
+            <div class="font-hand text-center text-4xl text-[#FFB4B4] my-2">&</div>
+
+            <div class="text-center space-y-3">
+                <div class="w-28 h-28 mx-auto rounded-full border-4 border-[#FFB4B4] overflow-hidden bg-white shadow">
+                    <img src="images/bride.png" alt="Cici" class="w-full h-full object-cover">
+                </div>
+                <h5 class="text-xl font-bold text-[#634444]">Citra Lestari, S.E (Cici)</h5>
+                <p class="text-xs text-gray-500 px-4">Putri kedua dari Bapak Hermawan Prasetyo & Ibu Siti Aminah</p>
+                <div class="flex justify-center gap-2 text-xs text-[#FF6B6B]">
+                    <span>📸 @cici_dummy</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-6 text-center space-y-6">
+            <h4 class="font-hand text-3xl text-[#FF6B6B]">Waktu & Tempat Acara</h4>
+            
+            <div class="bg-amber-50/60 p-5 rounded-2xl border border-amber-200/50 space-y-2 shadow-sm">
+                <span class="bg-amber-200 text-amber-800 text-[10px] font-bold px-3 py-0.5 rounded-full uppercase">Akad Nikah</span>
+                <p class="text-md font-bold text-[#634444] mt-1">Pukul 08.00 - 10.00 WIB</p>
+                <p class="text-xs text-gray-500">Bertempat di Kediaman Mempelai Wanita</p>
+            </div>
+
+            <div class="bg-[#FFEAEA]/60 p-5 rounded-2xl border border-[#FFB4B4]/50 space-y-2 shadow-sm">
+                <span class="bg-[#FFB4B4] text-white text-[10px] font-bold px-3 py-0.5 rounded-full uppercase">Resepsi Pernikahan</span>
+                <p class="text-md font-bold text-[#634444] mt-1">Pukul 11.00 - 16.00 WIB</p>
+                <p class="text-xs text-gray-600 font-semibold">Gedung Serbaguna Bahagia</p>
+                <p class="text-[11px] text-gray-500">Jl. Melati No. 123, Kota Indah</p>
+            </div>
+
+            <div class="grid grid-cols-4 gap-2 px-4 pt-4 text-center">
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="hari" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Hari</p></div>
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="jam" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Jam</p></div>
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="menit" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Menit</p></div>
+                <div class="bg-[#FF6B6B] text-white p-2 rounded-xl shadow-sm"><span id="detik" class="text-lg font-bold">0</span><p class="text-[9px] uppercase">Detik</p></div>
+            </div>
+        </section>
+
+        <section class="p-6 text-center space-y-6 bg-[#FFF5F5]/60 border-y-2 border-dashed border-[#FFB4B4]">
+            <div class="space-y-1">
+                <h4 class="font-hand text-3xl text-[#FF6B6B]">🎁 Wedding Gift 🎁</h4>
+                <p class="text-xs text-gray-500 px-4">Bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih, dapat mengirimkannya melalui:</p>
+            </div>
+
+            <div class="max-w-sm mx-auto space-y-4">
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#FFD2D2] text-left space-y-1 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-[#FFB4B4] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">BANK BCA</div>
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider pt-2">No. Rekening</p>
+                    <p class="text-lg font-bold text-[#634444] tracking-wide">1234567890</p>
+                    <p class="text-xs text-gray-500">a.n. Rizky Aditya</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#FFD2D2] text-left space-y-1 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-[#FFB4B4] text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">BANK MANDIRI</div>
+                    <p class="text-xs text-gray-400 font-bold uppercase tracking-wider pt-2">No. Rekening</p>
+                    <p class="text-lg font-bold text-[#634444] tracking-wide font-mono">0987654321</p>
+                    <p class="text-xs text-gray-500">a.n. Citra Lestari</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-[#FFD2D2] text-left space-y-2">
+                    <span class="inline-block bg-[#FFEAEA] text-[#FF6B6B] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">📍 Alamat Pengiriman Kado</span>
+                    <p class="text-sm font-bold text-[#634444]">Rumah Mempelai Wanita (Cici)</p>
+                    <p class="text-xs text-gray-500 leading-relaxed">Jl. Melati No. 123, RT 05/RW 02, Kecamatan Mawar, Kota Indah, Jawa Barat (Samping Toko Kue Sejahtera)</p>
+                </div>
+            </div>
+        </section>
+        <section class="py-10 px-6 text-center space-y-6 bg-gradient-to-b from-white to-[#FFF5F5]">
+            <div class="space-y-1">
+                <h4 class="text-[#FF6B6B] font-bold font-hand text-3xl">💌 Berikan Doa Restu 💌</h4>
+                <p class="text-[11px] text-gray-400">Tinggalkan pesan manis untuk kedua mempelai</p>
+            </div>
+            
+            <form class="space-y-3 text-left max-w-sm mx-auto bg-[#FFF0F0] p-5 rounded-3xl border border-[#FFD2D2]">
+                <div>
+                    <label class="block text-xs font-bold text-[#634444] mb-1 pl-1">Nama Kamu :</label>
+                    <input type="text" placeholder="Tulis namamu di sini..." class="w-full p-3 bg-white border border-[#FFD2D2] rounded-2xl text-sm text-[#634444] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFB4B4]">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#634444] mb-1 pl-1">Pesan & Doa :</label>
+                    <textarea rows="3" placeholder="Selamat menempuh hidup baru ya!..." class="w-full p-3 bg-white border border-[#FFD2D2] rounded-2xl text-sm text-[#634444] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFB4B4]"></textarea>
+                </div>
+                <button type="button" class="w-full py-3 bg-[#FF6B6B] hover:bg-[#FF5252] text-white font-bold text-xs uppercase tracking-wider rounded-2xl shadow-sm transition transform active:scale-95">✨ Kirim Doa Manis ✨</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const btnBuka = document.getElementById('btn-buka');
+        const coverSection = document.getElementById('cover-section');
+        const music = document.getElementById('bg-music');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaTamu = urlParams.get('to');
+        if (namaTamu) { document.getElementById('nama-tamu-cover').innerText = decodeURIComponent(namaTamu); }
+
+        btnBuka.addEventListener('click', () => {
+            music.play().catch(e => console.log("Audio block active"));
+            coverSection.classList.add('scale-0', 'opacity-0');
+            setTimeout(() => { coverSection.style.display = 'none'; }, 1000);
+        });
+
+        const targetDate = new Date("Oct 17, 2026 10:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime(); const distance = targetDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("hari").innerText = days;
+            document.getElementById("jam").innerText = hours;
+            document.getElementById("menit").innerText = minutes;
+            document.getElementById("detik").innerText = seconds;
+        }, 1000);
+    </script>
+</body>
+</html>
