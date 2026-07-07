@@ -138,7 +138,6 @@
                         Lengkapi Data Undangan Pernikahanmu
                     </h2>
                     <div class="space-y-4">
-                        
                         <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
                             <div class="flex-1 relative pb-2">
                                 <label class="block text-sm font-bold text-[#59090B] mb-2">1. Nama Mempelai Pria</label>
@@ -192,7 +191,6 @@
                                 <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -201,7 +199,6 @@
                         Detail Acara
                     </h2>
                     <div class="space-y-4">
-                        
                         <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
                             <div class="flex-1 pb-2">
                                 <label class="block text-sm font-bold text-[#59090B] mb-2">1. Date</label>
@@ -249,28 +246,37 @@
                                 <input type="text" id="no_rekening" placeholder="Masukkan No. Rekening untuk kado digital..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 focus:outline-none focus:border-[#59090B] font-medium text-gray-800">
                             </div>
                         </div>
-
-                        <div class="flex flex-col sm:flex-row justify-end items-stretch sm:items-center gap-4 pt-6">
-                            <a href="index.html" class="text-[#59090B] bg-white font-bold text-sm tracking-wide px-6 py-3.5 rounded-xl shadow-sm border border-rose-100 hover:bg-gray-50 transition flex items-center justify-center order-2 sm:order-1">
-                                &lt; Kembali
-                            </a>
-                            
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-wide px-6 py-3.5 rounded-xl flex items-center justify-center gap-3 shadow-md transition order-1 sm:order-2">
-                                <span>Submit Data</span>
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-
                     </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-red-200 flex flex-col sm:flex-row justify-between items-center w-full gap-5">
+    
+                <div class="flex flex-row items-center justify-center gap-2 shrink-0 w-full sm:w-auto">
+                    <label for="tema_undangan" class="text-sm font-medium text-[#59090B] whitespace-nowrap">Pilih Tema:</label>
+                    <select id="tema_undangan" name="tema_undangan" required class="w-full sm:w-48 px-3 py-2 bg-white border border-red-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#59090B]">
+                        <option value="" disabled selected>-- Pilih Template --</option>
+                        <option value="modern">Minimalis Modern</option>
+                        <option value="tradisional">Traditional Royal</option>
+                        <option value="kartun">Cute Cartoon Style</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-row justify-center sm:justify-end gap-3 shrink-0 w-full sm:w-auto">
+                    <button type="button" class="flex-1 sm:flex-none text-center px-5 py-2 rounded-lg border border-red-300 text-red-700 hover:bg-red-50 transition font-medium whitespace-nowrap">
+                        &lt; Kembali
+                    </button>
+                    <button type="submit" class="flex-1 sm:flex-none text-center px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition font-medium whitespace-nowrap">
+                        Submit Data
+                    </button>
                 </div>
 
             </div>
+
         </div>
     </form>
 
-<script>
+    <script>
         const menuToggleBtn = document.getElementById('menu-toggle-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -304,28 +310,34 @@
         formUndangan.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formDataPayload = {
-                nama_pria: document.getElementById('nama_pria').value,
-                nama_wanita: document.getElementById('nama_wanita').value,
-                ayah_pria: document.getElementById('ayah_pria').value,
-                ibu_pria: document.getElementById('ibu_pria').value,
-                ayah_wanita: document.getElementById('ayah_wanita').value,
-                ibu_wanita: document.getElementById('ibu_wanita').value,
-                tanggal_acara: document.getElementById('tanggal_acara').value,
-                waktu_acara: document.getElementById('waktu_acara').value,
-                lokasi_acara: document.getElementById('lokasi_acara').value,
-                maps_link: document.getElementById('maps_link').value,
-                foto_prewedding: null,
-                no_rekening: document.getElementById('no_rekening').value || null
-            };
+            const formDataPayload = new FormData();
+            
+            formDataPayload.append('nama_pria', document.getElementById('nama_pria').value);
+            formDataPayload.append('nama_wanita', document.getElementById('nama_wanita').value);
+            formDataPayload.append('ayah_pria', document.getElementById('ayah_pria').value);
+            formDataPayload.append('ibu_pria', document.getElementById('ibu_pria').value);
+            formDataPayload.append('ayah_wanita', document.getElementById('ayah_wanita').value);
+            formDataPayload.append('ibu_wanita', document.getElementById('ibu_wanita').value);
+            formDataPayload.append('tanggal_acara', document.getElementById('tanggal_acara').value);
+            formDataPayload.append('waktu_acara', document.getElementById('waktu_acara').value);
+            formDataPayload.append('lokasi_acara', document.getElementById('lokasi_acara').value);
+            formDataPayload.append('maps_link', document.getElementById('maps_link').value);
+            formDataPayload.append('tema_undangan', document.getElementById('tema_undangan').value);
+            
+            const noRekening = document.getElementById('no_rekening').value;
+            if (noRekening) {
+                formDataPayload.append('no_rekening', noRekening);
+            }
+
+            const fotoInput = document.getElementById('foto_prewedding');
+            if (fotoInput && fotoInput.files.length > 0) {
+                formDataPayload.append('foto_prewedding', fotoInput.files[0]);
+            }
 
             try {
                 const response = await fetch('/api/booking', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formDataPayload)
+                    body: formDataPayload 
                 });
 
                 const result = await response.json();
@@ -333,6 +345,20 @@
                 if (response.ok && result.success) {
                     alert('Sukses: ' + result.message);
                     formUndangan.reset();
+
+                    const slug = result.slug;
+                    const tema = result.tema;
+
+                    if (tema === 'modern') {
+                        window.location.href = `/undangan-modern.html?slug=${slug}`;
+                    } else if (tema === 'tradisional') {
+                        window.location.href = `/undangan-tradisional.html?slug=${slug}`;
+                    } else if (tema === 'kartun') {
+                        window.location.href = `/undangan-kartun.html?slug=${slug}`;
+                    } else {
+                        window.location.href = `/undangan.html?slug=${slug}`;
+                    }
+
                 } else {
                     alert('Gagal menyimpan data: ' + (result.error || result.message));
                 }

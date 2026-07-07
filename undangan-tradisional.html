@@ -288,6 +288,48 @@
             fetchDataPengantin();
             loadDaftarUcapan();
         };
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slugUndangan = urlParams.get('slug');
+
+            if (!slugUndangan) {
+                console.error("Slug undangan tidak ditemukan di URL.");
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/get-undangan?slug=${slugUndangan}`);
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    const data = result.data;
+
+                    const imgFoto = document.getElementById('foto-prewedding-display');
+                    if (imgFoto && data.foto_prewedding) {
+                        imgFoto.src = data.foto_prewedding;
+                    }
+
+                    if (document.getElementById('nama-pria')) document.getElementById('nama-pria').innerText = data.nama_pria;
+                    if (document.getElementById('nama-wanita')) document.getElementById('nama-wanita').innerText = data.nama_wanita;
+                    if (document.getElementById('waktu-acara')) document.getElementById('waktu-acara').innerText = data.waktu_acara;
+                    if (document.getElementById('lokasi-acara')) document.getElementById('lokasi-acara').innerText = data.lokasi_acara;
+                    
+                    const btnMaps = document.getElementById('btn-maps');
+                    if (btnMaps && data.maps_link) {
+                        btnMaps.href = data.maps_link;
+                    }
+
+                    if (data.tanggal_acara) {
+                    }
+
+                } else {
+                    alert("Gagal memuat data undangan: " + result.message);
+                }
+            } catch (error) {
+                console.error("Terjadi kesalahan koneksi data:", error);
+            }
+        });
     </script>
 </body>
 </html>
