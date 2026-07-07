@@ -63,7 +63,16 @@
                 tbody.innerHTML = "";
 
                 data.forEach((pesanan, index) => {
-                    const linkUndangan = `${window.location.origin}/undangan-modern.html?id=${pesanan.id}`;
+                    const tema = pesanan.tema_undangan || 'modern'; 
+                    let fileTemplate = 'undangan-modern.html';
+
+                    if (tema === 'tradisional' || tema === 'traditional') {
+                        fileTemplate = 'undangan-tradisional.html';
+                    } else if (tema === 'kartun' || tema === 'cartoon') {
+                        fileTemplate = 'undangan-kartun.html';
+                    }
+
+                    const linkUndangan = `${window.location.origin}/${fileTemplate}?id=${pesanan.id}`;
 
                     tbody.innerHTML += `
                         <tr class="border-b hover:bg-gray-50">
@@ -74,7 +83,7 @@
                             <td class="p-3 border">${pesanan.no_rekening || '-'}</td>
                             <td class="p-3 border">
                                 <a href="${linkUndangan}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1.5 rounded font-semibold shadow">
-                                    Buka Undangan ➔
+                                    Buka Undangan (${tema}) ➔
                                 </a>
                             </td>
                         </tr>
