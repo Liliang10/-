@@ -40,7 +40,7 @@
         
         <section class="text-center space-y-6 pt-12">
             <p class="text-[10px] tracking-[0.4em] uppercase text-amber-500/60 font-semibold">Membuka Serat</p>
-            <div class="w-16 h-16 mx-auto rounded-full border border-amber-900/30 flex items-center justify-center p-1">
+            <div class="w-32 h-32 mx-auto rounded-full border border-amber-900/30 flex items-center justify-center p-1">
                 <div id="foto-mempelai-lingkaran" class="w-full h-full rounded-full bg-amber-950/20 bg-cover bg-center"></div>
             </div>
             <h2 class="text-3xl font-signature text-amber-400">Aris & Laras</h2>
@@ -145,13 +145,15 @@
 
         function startCountdown(targetDate) {
             const targetTime = new Date(targetDate).getTime();
+            // PERBAIKAN DI SINI: Mendeklarasikan intervalId terlebih dahulu di bagian atas scope fungsi agar updateTimer bisa mengakses variabelnya secara aman
+            let intervalId;
             
             function updateTimer() {
                 const now = new Date().getTime();
                 const difference = targetTime - now;
 
                 if (difference <= 0) {
-                    clearInterval(intervalId);
+                    if (intervalId) clearInterval(intervalId);
                     return;
                 }
 
@@ -167,7 +169,7 @@
             }
 
             updateTimer();
-            const intervalId = setInterval(updateTimer, 1000);
+            intervalId = setInterval(updateTimer, 1000);
         }
 
         async function loadDaftarUcapan(pesananId) {
