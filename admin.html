@@ -20,27 +20,64 @@
             </button>
         </div>
 
-        <div class="hidden md:block overflow-x-auto rounded-lg border border-gray-200">
-            <table class="w-full text-left border-collapse bg-white text-sm">
+        <div class="hidden md:block overflow-x-auto border border-gray-100 rounded-xl">
+            <table class="w-full text-left border-collapse">
                 <thead>
-                    <tr class="bg-gray-800 text-white">
-                        <th class="p-3 border-b font-semibold w-12 text-center">No</th>
-                        <th class="p-3 border-b font-semibold">Mempelai & Slug</th>
-                        <th class="p-3 border-b font-semibold">Waktu & Tempat Acara</th>
-                        <th class="p-3 border-b font-semibold">Kado Digital (Rekening)</th>
-                        <th class="p-3 border-b font-semibold text-center w-52">Aksi Link</th>
+                    <tr class="bg-gray-50 text-gray-600 text-xs font-semibold uppercase border-b border-gray-100">
+                        <th class="p-4">Pengantin</th>
+                        <th class="p-4">Tema</th>
+                        <th class="p-4">Tanggal Acara</th>
+                        <th class="p-4">Link Utama</th>
+                        <th class="p-4 text-center">Aksi Tamu</th>
                     </tr>
                 </thead>
-                <tbody id="pesanan-table-body" class="divide-y divide-gray-200">
+                <tbody id="data-tbody" class="text-sm text-gray-700 divide-y divide-gray-50">
                     <tr>
-                        <td colspan="5" class="p-8 text-center text-gray-400">Sedang memuat data...</td>
+                        <td colspan="5" class="p-4 text-center text-gray-400 font-medium animate-pulse">Memuat data dari database...</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div id="pesanan-cards-container" class="block md:hidden space-y-4">
-            <p class="text-center text-gray-400 py-8 text-sm">Sedang memuat data...</p>
+        <div id="data-card-container" class="md:hidden space-y-4">
+            <div class="p-4 text-center text-gray-400 font-medium animate-pulse border border-gray-100 rounded-xl">
+                Memuat data mobile...
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-tamu" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl transform scale-95 transition-all duration-300">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="font-bold text-gray-800 text-lg">Buat Link Nama Tamu</h3>
+                <button onclick="tutupModalTamu()" class="text-gray-400 hover:text-gray-600 font-semibold text-xl">&times;</button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Pasangan</label>
+                    <p id="modal-pasangan" class="text-gray-800 font-bold text-base">-</p>
+                </div>
+
+                <div>
+                    <label for="input-nama-tamu" class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Nama Tamu Undangan</label>
+                    <input type="text" id="input-nama-tamu" placeholder="Contoh: Gavin atau Mia" oninput="generateLinkHasil()" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                </div>
+
+                <div id="box-hasil-link" class="bg-gray-50 p-3 rounded-xl border border-gray-100 space-y-2 hidden">
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider">Tautan Siap Kirim</label>
+                    <p id="text-link-hasil" class="text-xs text-blue-600 font-mono break-all bg-white p-2 rounded border"></p>
+                    
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <button onclick="salinLinkTamu()" class="bg-gray-800 hover:bg-gray-900 text-white text-xs py-2 rounded-lg font-medium transition-colors">
+                            📋 Salin Tautan
+                        </button>
+                        <a id="btn-wa-share" href="#" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-1">
+                            💬 Kirim ke WA
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -49,80 +86,65 @@
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3cGR0c3BlemtodHN6eW95dWttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4OTQ0OTUsImV4cCI6MjA5ODQ3MDQ5NX0.5MFD5yA8ip4IeqGLWTaDJDOPji7zrq9AWxAb7_C5V74";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+        let activeSlug = "";
+        let activeTema = "";
+        let activePasangan = "";
+
         async function loadData() {
-            const tbody = document.getElementById('pesanan-table-body');
-            const cardContainer = document.getElementById('pesanan-cards-container');
-            
-            const loadingHtml = `<p class="text-center text-gray-400 py-8 text-sm">Sedang mengambil data terbaru...</p>`;
-            if(tbody) tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-gray-400">Sedang mengambil data terbaru...</td></tr>`;
-            if(cardContainer) cardContainer.innerHTML = loadingHtml;
+            const tbody = document.getElementById('data-tbody');
+            const cardContainer = document.getElementById('data-card-container');
 
             try {
                 const { data, error } = await supabaseClient
                     .from('pesanan_undangan')
                     .select('*')
-                    .order('id', { ascending: false });
+                    .order('created_at', { ascending: false });
 
                 if (error) throw error;
 
                 if (!data || data.length === 0) {
-                    const kosongHtml = `<tr><td colspan="5" class="p-8 text-center text-gray-400">Belum ada data pesanan masuk.</td></tr>`;
-                    if(tbody) tbody.innerHTML = kosongHtml;
-                    if(cardContainer) cardContainer.innerHTML = `<p class="text-center text-gray-400 py-8 text-sm">Belum ada data pesanan masuk.</p>`;
+                    const kosongMsg = `<tr><td colspan="5" class="p-8 text-center text-gray-400">Belum ada data pesanan undangan.</td></tr>`;
+                    if(tbody) tbody.innerHTML = kosongMsg;
+                    if(cardContainer) cardContainer.innerHTML = `<div class="p-8 text-center text-gray-400 text-sm border rounded-xl">Belum ada data pesanan.</div>`;
                     return;
                 }
 
-                if(tbody) tbody.innerHTML = '';
-                if(cardContainer) cardContainer.innerHTML = '';
+                if(tbody) tbody.innerHTML = "";
+                if(cardContainer) cardContainer.innerHTML = "";
 
-                data.forEach((pesanan, index) => {
-                    let fileTemplate = 'undangan-modern.html';
-                    let namaTema = 'Minimalist Modern';
-                    let warnaBadge = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                data.forEach(pesanan => {
+                    const tema = pesanan.tema_undangan || 'default';
+                    let fileTemplate = 'undangan.html';
 
-                    if (pesanan.id % 3 === 2) {
-                        fileTemplate = 'undangan-tradisional.html';
-                        namaTema = 'Traditional Royal';
-                        warnaBadge = 'bg-amber-50 text-amber-700 border-amber-200';
-                    } else if (pesanan.id % 3 === 0) {
-                        fileTemplate = 'undangan-kartun.html';
-                        namaTema = 'Cute Cartoon';
-                        warnaBadge = 'bg-rose-50 text-rose-700 border-rose-200';
-                    }
+                    if (tema === 'modern') fileTemplate = 'undangan-modern.html';
+                    else if (tema === 'tradisional') fileTemplate = 'undangan-tradisional.html';
+                    else if (tema === 'kartun') fileTemplate = 'undangan-kartun.html';
 
-                    const linkUndanganBase = `${window.location.origin}/${fileTemplate}?slug=${pesanan.slug}&to=Tamu%20Undangan`;
+                    const domainAsli = window.location.origin;
+                    const linkFinalWeb = `${domainAsli}/${fileTemplate}?slug=${pesanan.slug}`;
+                    const namaPasanganStr = `${pesanan.nama_pria} & ${pesanan.nama_wanita}`;
 
-                    let tanggalTampil = pesanan.tanggal_acara || '-';
-                    if(pesanan.tanggal_acara) {
-                        try {
-                            const opsi = { year: 'numeric', month: 'long', day: 'numeric' };
-                            tanggalTampil = new Date(pesanan.tanggal_acara).toLocaleDateString('id-ID', opsi);
-                        } catch(e) {}
+                    let tanggalTampil = '-';
+                    if (pesanan.tanggal_acara) {
+                        const opsi = { day: 'numeric', month: 'long', year: 'numeric' };
+                        tanggalTampil = new Date(pesanan.tanggal_acara).toLocaleDateString('id-ID', opsi);
                     }
 
                     if(tbody) {
                         tbody.innerHTML += `
-                            <tr class="hover:bg-gray-50 transition-colors">
-                                <td class="p-3 border-b text-center text-gray-500">${index + 1}</td>
-                                <td class="p-3 border-b">
-                                    <div class="font-bold text-gray-800">${pesanan.nama_pria || '-'} & ${pesanan.nama_wanita || '-'}</div>
-                                    <div class="text-xs text-gray-400 mt-0.5">slug: <span class="bg-gray-100 px-1 py-0.5 rounded text-gray-600 font-mono">${pesanan.slug || '-'}</span></div>
+                            <tr class="hover:bg-gray-50/80 transition-colors">
+                                <td class="p-4 font-semibold text-gray-900">${namaPasanganStr}</td>
+                                <td class="p-4"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-medium uppercase tracking-wider">${tema}</span></td>
+                                <td class="p-4 text-gray-500 text-xs">${tanggalTampil}</td>
+                                <td class="p-4">
+                                    <a href="${linkFinalWeb}" target="_blank" class="text-blue-600 hover:underline font-medium text-xs break-all">
+                                        ${fileTemplate}?slug=${pesanan.slug} ↗
+                                    </a>
                                 </td>
-                                <td class="p-3 border-b text-xs space-y-0.5">
-                                    <div class="text-gray-700 font-semibold">📅 ${tanggalTampil} (${pesanan.waktu_acara || '-'})</div>
-                                    <div class="text-gray-500 truncate max-w-xs">📍 ${pesanan.lokasi_acara || '-'}</div>
-                                </td>
-                                <td class="p-3 border-b">
-                                    <div class="text-sm font-medium text-gray-700">${pesanan.no_rekening || '-'}</div>
-                                    <div class="text-xs text-gray-400">a.n. ${pesanan.nama_pria || 'Pengantin'}</div>
-                                </td>
-                                <td class="p-3 border-b text-center">
-                                    <div class="flex flex-col gap-1 items-center">
-                                        <span class="text-[10px] px-2 py-0.5 border rounded-full font-medium ${warnaBadge}">${namaTema}</span>
-                                        <a href="${linkUndanganBase}" target="_blank" class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-2 rounded-lg font-medium shadow-sm transition-colors">
-                                            Buka Undangan ➔
-                                        </a>
-                                    </div>
+                                <td class="p-4 text-center">
+                                    <button onclick="bukaModalTamu('${pesanan.slug}', '${tema}', '${namaPasanganStr}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs px-3 py-1.5 rounded-lg font-semibold border border-blue-200 transition-colors">
+                                        📝 Buat Link Tamu
+                                    </button>
                                 </td>
                             </tr>
                         `;
@@ -130,26 +152,23 @@
 
                     if(cardContainer) {
                         cardContainer.innerHTML += `
-                            <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3 relative overflow-hidden">
-                                <div class="absolute top-0 right-0">
-                                    <span class="text-[9px] px-2.5 py-1 border-b border-l rounded-bl-xl font-semibold uppercase tracking-wider block ${warnaBadge}">${namaTema}</span>
+                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 space-y-3 shadow-sm">
+                                <div class="flex justify-between items-center border-b pb-2">
+                                    <div class="font-bold text-gray-900 text-base">${namaPasanganStr}</div>
+                                    <span class="px-2 py-0.5 bg-gray-200 text-gray-700 rounded text-[10px] font-bold uppercase tracking-wide">${tema}</span>
                                 </div>
-                                
-                                <div>
-                                    <span class="text-xs text-gray-400 font-bold font-mono">#${index + 1}</span>
-                                    <h3 class="text-base font-bold text-gray-800 mt-0.5">${pesanan.nama_pria || '-'} & ${pesanan.nama_wanita || '-'}</h3>
-                                    <p class="text-[11px] text-gray-400 font-mono mt-0.5">slug: ${pesanan.slug || '-'}</p>
+                                <div class="text-xs space-y-1 text-gray-600">
+                                    <div><span class="font-semibold text-blue-600">📅 Acara:</span> ${tanggalTampil}</div>
+                                    <div><span class="font-semibold text-blue-600">📍 Tempat:</span> ${pesanan.lokasi_acara || '-'}</div>
                                 </div>
-
-                                <div class="bg-gray-50 p-2.5 rounded-lg text-xs space-y-1.5 border border-gray-100">
-                                    <div class="text-gray-700"><span class="font-semibold text-blue-600">📅 Waktu:</span> ${tanggalTampil} (${pesanan.waktu_acara || '-'})</div>
-                                    <div class="text-gray-700"><span class="font-semibold text-blue-600">📍 Tempat:</span> ${pesanan.lokasi_acara || '-'}</div>
-                                    <div class="text-gray-700"><span class="font-semibold text-blue-600">💳 Rekening:</span> ${pesanan.no_rekening || '-'} (a.n ${pesanan.nama_pria || 'Pengantin'})</div>
+                                <div class="grid grid-cols-2 gap-2 pt-1">
+                                    <a href="${linkFinalWeb}" target="_blank" class="text-center bg-gray-800 hover:bg-gray-900 text-white text-xs py-2 rounded-lg font-medium shadow-sm transition-colors">
+                                        Lihat Undangan
+                                    </a>
+                                    <button onclick="bukaModalTamu('${pesanan.slug}', '${tema}', '${namaPasanganStr}')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs py-2 rounded-lg font-medium shadow-sm transition-colors">
+                                        📝 Link Tamu
+                                    </button>
                                 </div>
-
-                                <a href="${linkUndanganBase}" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white text-xs py-2.5 rounded-lg font-semibold shadow transition-colors">
-                                    Lihat Live Web Undangan ➔
-                                </a>
                             </div>
                         `;
                     }
@@ -158,13 +177,64 @@
             } catch (error) {
                 console.error("Error ambil data:", error);
                 const errorMsg = `Gagal mengambil data dari Supabase: ${error.message}`;
-                
                 if(tbody) tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500 font-medium">${errorMsg}</td></tr>`;
                 if(cardContainer) cardContainer.innerHTML = `<div class="p-4 text-center text-red-500 text-sm font-medium border border-red-200 bg-red-50 rounded-xl">${errorMsg}</div>`;
             }
         }
 
-        window.onload = loadData;
+        function bukaModalTamu(slug, tema, pasangan) {
+            activeSlug = slug;
+            activeTema = tema;
+            activePasangan = pasangan;
+
+            document.getElementById('modal-pasangan').innerText = pasangan;
+            document.getElementById('input-nama-tamu').value = "";
+            document.getElementById('box-hasil-link').classList.add('hidden');
+            
+            const modal = document.getElementById('modal-tamu');
+            modal.classList.remove('hidden');
+        }
+
+        function tutupModalTamu() {
+            document.getElementById('modal-tamu').classList.add('hidden');
+        }
+
+        function generateLinkHasil() {
+            const namaTamu = document.getElementById('input-nama-tamu').value.trim();
+            const boxHasil = document.getElementById('box-hasil-link');
+            const txtHasil = document.getElementById('text-link-hasil');
+            const btnWa = document.getElementById('btn-wa-share');
+
+            if (!namaTamu) {
+                boxHasil.classList.add('hidden');
+                return;
+            }
+
+            let fileTemplate = 'undangan.html';
+            if (activeTema === 'modern') fileTemplate = 'undangan-modern.html';
+            else if (activeTema === 'tradisional') fileTemplate = 'undangan-tradisional.html';
+            else if (activeTema === 'kartun') fileTemplate = 'undangan-kartun.html';
+
+            const domainAsli = window.location.origin;
+            const namaAmanUrl = encodeURIComponent(namaTamu);
+            
+            const linkFinal = `${domainAsli}/${fileTemplate}?slug=${activeSlug}&to=${namaAmanUrl}`;
+
+            txtHasil.innerText = linkFinal;
+
+            const templatePesanWA = `Halo ${activePasangan},\n\nBerikut tautan undangan digital khusus untuk teman Anda *${namaTamu}*:\n\n${linkFinal}\n\nSilakan disalin dan dibagikan. Terima kasih!`;
+            btnWa.href = `https://wa.me/?text=${encodeURIComponent(templatePesanWA)}`;
+
+            boxHasil.classList.remove('hidden');
+        }
+
+        function salinLinkTamu() {
+            const linkTeks = document.getElementById('text-link-hasil').innerText;
+            navigator.clipboard.writeText(linkTeks);
+            alert('Tautan tamu berhasil disalin ke clipboard!');
+        }
+
+        window.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
