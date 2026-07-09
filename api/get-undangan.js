@@ -23,9 +23,12 @@ export default async function handler(req, res) {
             .single();
 
         if (error || !data) {
+            console.error('Undangan tidak ditemukan untuk slug:', slug, error);
             return res.status(404).json({ success: false, message: 'Data undangan tidak ditemukan.' });
         }
 
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+        
         return res.status(200).json({ success: true, data: data });
 
     } catch (error) {

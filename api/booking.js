@@ -36,36 +36,39 @@ export default async function handler(req, res) {
             const waktu_acara = fields.waktu_acara?.[0] || fields.waktu_acara;
             const lokasi_acara = fields.lokasi_acara?.[0] || fields.lokasi_acara;
             const maps_link = fields.maps_link?.[0] || fields.maps_link;
-            const no_rekening = fields.no_rekening?.[0] || fields.no_rekening || null;
+            const no_rekening = fields.no_rekening?.[0] || fields.no_rekening;
             const tema_undangan = fields.tema_undangan?.[0] || fields.tema_undangan;
 
-            const slug = `${nama_pria}-${nama_wanita}`
-                .toLowerCase()
-                .replace(/[^a-z0-9-]/g, '-')
-                .replace(/-+/g, '-');
+            const pemilik_rekening = fields.pemilik_rekening?.[0] || fields.pemilik_rekening;
+
+            if (!nama_pria || !nama_wanita || !tanggal_acara) {
+                return res.status(400).json({ success: false, message: 'Nama mempelai dan tanggal acara wajib diisi.' });
+            }
+
+            const cleanPria = nama_pria.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const cleanWanita = nama_wanita.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const uniqueId = Math.floor(1000 + Math.random() * 9000);
+            const slug = `${cleanPria}-dan-${cleanWanita}-${uniqueId}`;
 
             let fotoPublicUrl = null;
-
             const fotoFile = files.foto_prewedding?.[0] || files.foto_prewedding;
+
             if (fotoFile && fotoFile.filepath) {
-                const fileBuffer = fs.readFileSync(fotoFile.filepath);
-                
-                const fileExt = fotoFile.originalFilename.split('.').pop();
-                const fileName = `${Date.now()}-${slug}.${fileExt}`;
+                const fileData = fs.readFileSync(fotoFile.filepath);
+                const fileExt = fotoFile.originalFilename ? fotoFile.originalFilename.split('.').pop() : 'jpg';
+                const fileName = `${slug}-${Date.now()}.${fileExt}`;
 
                 const { data: uploadData, error: uploadError } = await supabase.storage
-                    .from('foto-prewedding')
-                    .upload(fileName, fileBuffer, {
-                        contentType: fotoFile.mimetype,
+                    .from('foto_prewedding')
+                    .upload(fileName, fileData, {
+                        contentType: fotoFile.mimetype || 'image/jpeg',
                         upsert: true
                     });
 
-                if (uploadError) {
-                    throw new Error('Gagal mengunggah foto ke Supabase Storage: ' + uploadError.message);
-                }
+                if (uploadError) throw uploadError;
 
                 const { data: publicUrlData } = supabase.storage
-                    .from('foto-prewedding')
+                    .from('foto_prewedding')
                     .getPublicUrl(fileName);
 
                 fotoPublicUrl = publicUrlData.publicUrl;
@@ -88,7 +91,8 @@ export default async function handler(req, res) {
                         maps_link: maps_link,
                         foto_prewedding: fotoPublicUrl,
                         no_rekening: no_rekening,
-                        tema_undangan: tema_undangan
+                        tema_undangan: tema_undangan,
+                        pemilik_rekening: pemilik_rekening
                     }
                 ])
                 .select();
@@ -96,7 +100,7 @@ export default async function handler(req, res) {
             if (error) throw error;
 
             return res.status(200).json({ 
-                success: true, 
+                success: true,
                 message: 'Undangan berhasil dipesan!',
                 slug: slug,
                 tema: tema_undangan,

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Form</title>
+    <title>Form Booking Undangan</title>
     
     <style>
         input:placeholder-shown ~ .box-silang { display: flex; }
@@ -12,6 +12,12 @@
 
         input:not(:placeholder-shown) ~ .box-silang { display: none; }
         input:not(:placeholder-shown) ~ .box-centang { display: flex; }
+        
+        /* Validasi style untuk select dropdown */
+        select:invalid ~ .box-silang { display: flex; }
+        select:invalid ~ .box-centang { display: none; }
+        select:valid ~ .box-silang { display: none; }
+        select:valid ~ .box-centang { display: flex; }
     </style>
     
 </head>
@@ -120,161 +126,177 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
                 </a>
                 <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Instagram">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 9a3.25 3.25 0 110 6.5 3.25 3.25 0 010-6.5zm5.25-1a1 1 0 100-2 1 1 0 000 2z" /></svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 9a3.25 3.25 0 110 6.5 3.25 3.25 0 010-6.5zm5.25-1a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /></svg>
                 </a>
                 <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-[#59090B] transition" aria-label="Twitter">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
             </div>
+
         </div>
+
     </header>
 
-    <form action="#" method="POST" id="form-undangan" class="py-12 pt-24 md:pt-28 px-4 md:px-6 min-h-screen bg-[#FCE3DF]">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+    <main class="pt-32 pb-16 px-4">
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-rose-100">
+            <div class="bg-gradient-to-r from-[#59090B] to-[#8C1C20] py-6 px-8 text-white">
+                <h1 class="text-2xl font-bold tracking-wide">Form Pengisian Undangan Pernikahan</h1>
+                <p class="text-rose-200 text-sm mt-1">Silakan lengkapi data undangan pernikahan Anda di bawah ini dengan benar.</p>
+            </div>
+
+            <form id="form-undangan" class="p-8 space-y-8" enctype="multipart/form-data">
                 
-                <div class="space-y-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#59090B] tracking-wide mb-4 md:mb-6">
-                        Lengkapi Data Undangan Pernikahanmu
+                <div class="space-y-4">
+                    <h2 class="text-lg font-bold text-[#59090B] border-b border-rose-100 pb-2 flex items-center gap-2">
+                        <span class="flex items-center justify-center bg-[#FCE3DF] text-[#59090B] w-7 h-7 rounded-full text-sm">1</span>
+                        Data Mempelai Pria
                     </h2>
-                    <div class="space-y-4">
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">1. Nama Mempelai Pria</label>
-                                <input type="text" id="nama_pria" required placeholder="Masukkan nama lengkap pria..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Pria</label>
+                            <input type="text" name="nama_pria" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
                         </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">2. Nama Mempelai Wanita</label>
-                                <input type="text" id="nama_wanita" required placeholder="Masukkan nama lengkap wanita..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ayah</label>
+                            <input type="text" name="ayah_pria" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
                         </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">3. Nama Mempelai Ayah Pria</label>
-                                <input type="text" id="ayah_pria" required placeholder="Masukkan nama ayah mempelai pria..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ibu</label>
+                            <input type="text" name="ibu_pria" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">4. Nama Mempelai Ibu Pria</label>
-                                <input type="text" id="ibu_pria" required placeholder="Masukkan nama ibu mempelai pria..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
+                <div class="space-y-4">
+                    <h2 class="text-lg font-bold text-[#59090B] border-b border-rose-100 pb-2 flex items-center gap-2">
+                        <span class="flex items-center justify-center bg-[#FCE3DF] text-[#59090B] w-7 h-7 rounded-full text-sm">2</span>
+                        Data Mempelai Wanita
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Wanita</label>
+                            <input type="text" name="nama_wanita" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
                         </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">5. Nama Mempelai Ayah Wanita</label>
-                                <input type="text" id="ayah_wanita" required placeholder="Masukkan nama ayah mempelai wanita..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ayah</label>
+                            <input type="text" name="ayah_wanita" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
                         </div>
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Ibu</label>
+                            <input type="text" name="ibu_wanita" placeholder=" " required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">6. Nama Mempelai Ibu Wanita</label>
-                                <input type="text" id="ibu_wanita" required placeholder="Masukkan nama ibu mempelai wanita..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
+                <div class="space-y-4">
+                    <h2 class="text-lg font-bold text-[#59090B] border-b border-rose-100 pb-2 flex items-center gap-2">
+                        <span class="flex items-center justify-center bg-[#FCE3DF] text-[#59090B] w-7 h-7 rounded-full text-sm">3</span>
+                        Detail Waktu & Lokasi Acara
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal Acara</label>
+                            <input type="date" name="tanggal_acara" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                        </div>
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Waktu Acara</label>
+                            <input type="text" name="waktu_acara" placeholder="Contoh: 09:00 - Selesai" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                        </div>
+                        <div class="relative md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi Acara (Alamat Lengkap)</label>
+                            <input type="text" name="lokasi_acara" placeholder="Nama Gedung / Jalan, No, RT/RW, Kecamatan, Kota" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                        </div>
+                        <div class="relative md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Link Google Maps Lokasi</label>
+                            <input type="url" name="maps_link" placeholder="https://maps.app.goo.gl/..." required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h2 class="text-lg font-bold text-[#59090B] border-b border-rose-100 pb-2 flex items-center gap-2">
+                        <span class="flex items-center justify-center bg-[#FCE3DF] text-[#59090B] w-7 h-7 rounded-full text-sm">4</span>
+                        Hadiah Digital / Kado Online
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nomor Rekening / E-Wallet</label>
+                            <input type="text" name="no_rekening" placeholder="Masukkan No Rekening & Nama Bank (Contoh: BCA - 1234567)" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm">
+                            <div class="box-silang absolute right-3 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-3 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                        </div>
+                        
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Rekening Atas Nama Siapa?</label>
+                            <select name="pemilik_rekening" required class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm appearance-none pr-10">
+                                <option value="" disabled selected hidden>-- Pilih Pemilik Rekening --</option>
+                                <option value="pria">Mempelai Pria</option>
+                                <option value="wanita">Mempelai Wanita</option>
+                            </select>
+                            <div class="box-silang absolute right-8 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-8 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="pointer-events-none absolute inset-y-0 right-3 top-6 flex items-center px-2 text-gray-500">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#59090B] tracking-wide mb-4 md:mb-6">
-                        Detail Acara
+                <div class="space-y-4">
+                    <h2 class="text-lg font-bold text-[#59090B] border-b border-rose-100 pb-2 flex items-center gap-2">
+                        <span class="flex items-center justify-center bg-[#FCE3DF] text-[#59090B] w-7 h-7 rounded-full text-sm">5</span>
+                        Foto Prewedding & Tema Undangan
                     </h2>
-                    <div class="space-y-4">
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">1. Date</label>
-                                <input type="date" id="tanggal_acara" required class="w-full text-sm bg-transparent border-b border-gray-300 py-1 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 cursor-pointer">
-                            </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Upload Foto Prewedding</label>
+                            <input type="file" id="foto_prewedding" accept="image/*" required class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-[#FCE3DF] file:text-[#59090B] hover:file:bg-[#FCE3DF]/80 file:cursor-pointer cursor-pointer border border-gray-300 rounded-xl p-1">
                         </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">2. Waktu Acara</label>
-                                <input type="text" id="waktu_acara" required placeholder="Contoh: 09:00 WIB - Selesai" class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">3. Lokasi</label>
-                                <input type="text" id="lokasi_acara" required placeholder="Masukkan nama gedung atau alamat rumah..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex justify-between items-center gap-4">
-                            <div class="flex-1 relative pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">4. Google Maps Link</label>
-                                <input type="url" id="maps_link" required placeholder="Tempel link share dari Google Maps..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 pr-10 focus:outline-none focus:border-[#59090B] font-medium text-gray-800 peer">
-                                <span class="box-centang text-emerald-500 font-bold text-sm bg-emerald-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-emerald-200">✓</span>
-                                <span class="box-silang text-rose-500 font-bold text-sm bg-rose-50/90 w-7 h-7 rounded-full flex items-center justify-center absolute right-1 bottom-2 pointer-events-none shadow-sm border border-rose-200">✕</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex items-center justify-between gap-4">
-                            <div class="flex-1 pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">5. Foto Prewedding</label>
-                                <input type="file" id="foto_prewedding" accept="image/*" class="w-full text-xs md:text-sm text-gray-500 file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-rose-50 file:text-[#59090B] hover:file:bg-rose-100 cursor-pointer">
-                            </div>
-                        </div>
-
-                        <div class="bg-white/60 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-sm border border-rose-100 flex items-center justify-between gap-4">
-                            <div class="flex-1 pb-2">
-                                <label class="block text-sm font-bold text-[#59090B] mb-2">6. No Rekening</label>
-                                <input type="text" id="no_rekening" placeholder="Masukkan No. Rekening untuk kado digital..." class="w-full text-sm bg-transparent border-b border-gray-300 py-1 focus:outline-none focus:border-[#59090B] font-medium text-gray-800">
+                        <div class="relative">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pilihan Tema Undangan</label>
+                            <select name="tema_undangan" required class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-white focus:ring-2 focus:ring-[#59090B] focus:border-transparent outline-none transition text-sm appearance-none pr-10">
+                                <option value="" disabled selected hidden>-- Pilih Tema Undangan --</option>
+                                <option value="modern">Minimalist Modern</option>
+                                <option value="tradisional">Traditional Royal</option>
+                                <option value="kartun">Cute Cartoon Style</option>
+                                <option value="islamic">Islamic Emerald</option>
+                            </select>
+                            <div class="box-silang absolute right-8 top-9 text-red-500 text-xs hidden items-center">❌</div>
+                            <div class="box-centang absolute right-8 top-9 text-green-500 text-xs hidden items-center">✅</div>
+                            <div class="pointer-events-none absolute inset-y-0 right-3 top-6 flex items-center px-2 text-gray-500">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="mt-8 pt-4 border-t border-red-200 flex flex-col sm:flex-row justify-between items-center w-full gap-5">
-    
-                <div class="flex flex-row items-center justify-center gap-2 shrink-0 w-full sm:w-auto">
-                    <label for="tema_undangan" class="text-sm font-medium text-[#59090B] whitespace-nowrap">Pilih Tema:</label>
-                    <select id="tema_undangan" name="tema_undangan" required class="w-full sm:w-48 px-3 py-2 bg-white border border-red-300 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#59090B]">
-                        <option value="" disabled selected>-- Pilih Template --</option>
-                        <option value="modern">Minimalis Modern</option>
-                        <option value="tradisional">Traditional Royal</option>
-                        <option value="kartun">Cute Cartoon Style</option>
-                    </select>
-                </div>
 
-                <div class="flex flex-row justify-center sm:justify-end gap-3 shrink-0 w-full sm:w-auto">
-                    <button type="button" class="flex-1 sm:flex-none text-center px-5 py-2 rounded-lg border border-red-300 text-red-700 hover:bg-red-50 transition font-medium whitespace-nowrap">
-                        &lt; Kembali
-                    </button>
-                    <button type="submit" class="flex-1 sm:flex-none text-center px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition font-medium whitespace-nowrap">
-                        Submit Data
+                <div class="pt-4">
+                    <button type="submit" class="w-full bg-gradient-to-r from-[#59090B] to-[#8C1C20] text-white font-bold py-3 px-6 rounded-xl hover:opacity-90 shadow-md hover:shadow-lg transition duration-300 transform active:scale-[0.98]">
+                        Simpan & Generate Undangan
                     </button>
                 </div>
 
-            </div>
-
+            </form>
         </div>
-    </form>
+    </main>
 
     <script>
         const menuToggleBtn = document.getElementById('menu-toggle-btn');
@@ -286,22 +308,18 @@
             const isHidden = mobileMenu.classList.contains('hidden');
             if (isHidden) {
                 mobileMenu.classList.remove('hidden');
-                mobileMenu.classList.add('flex');
                 setTimeout(() => {
                     mobileMenu.classList.remove('scale-y-95', 'opacity-0');
                     mobileMenu.classList.add('scale-y-100', 'opacity-100');
                 }, 10);
-                hamburgerIcon.classList.replace('block', 'hidden');
-                closeIcon.classList.replace('hidden', 'block');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
             } else {
                 mobileMenu.classList.remove('scale-y-100', 'opacity-100');
                 mobileMenu.classList.add('scale-y-95', 'opacity-0');
-                setTimeout(() => {
-                    mobileMenu.classList.remove('flex');
-                    mobileMenu.classList.add('hidden');
-                }, 300);
-                hamburgerIcon.classList.replace('hidden', 'block');
-                closeIcon.classList.replace('block', 'hidden');
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
             }
         });
 
@@ -310,27 +328,10 @@
         formUndangan.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formDataPayload = new FormData();
-            
-            formDataPayload.append('nama_pria', document.getElementById('nama_pria').value);
-            formDataPayload.append('nama_wanita', document.getElementById('nama_wanita').value);
-            formDataPayload.append('ayah_pria', document.getElementById('ayah_pria').value);
-            formDataPayload.append('ibu_pria', document.getElementById('ibu_pria').value);
-            formDataPayload.append('ayah_wanita', document.getElementById('ayah_wanita').value);
-            formDataPayload.append('ibu_wanita', document.getElementById('ibu_wanita').value);
-            formDataPayload.append('tanggal_acara', document.getElementById('tanggal_acara').value);
-            formDataPayload.append('waktu_acara', document.getElementById('waktu_acara').value);
-            formDataPayload.append('lokasi_acara', document.getElementById('lokasi_acara').value);
-            formDataPayload.append('maps_link', document.getElementById('maps_link').value);
-            formDataPayload.append('tema_undangan', document.getElementById('tema_undangan').value);
-            
-            const noRekening = document.getElementById('no_rekening').value;
-            if (noRekening) {
-                formDataPayload.append('no_rekening', noRekening);
-            }
-
+            const formDataPayload = new FormData(formUndangan);
             const fotoInput = document.getElementById('foto_prewedding');
-            if (fotoInput && fotoInput.files.length > 0) {
+            
+            if (fotoInput.files.length > 0) {
                 formDataPayload.append('foto_prewedding', fotoInput.files[0]);
             }
 
@@ -355,6 +356,8 @@
                         window.location.href = `/undangan-tradisional.html?slug=${slug}`;
                     } else if (tema === 'kartun') {
                         window.location.href = `/undangan-kartun.html?slug=${slug}`;
+                    } else if (tema === 'islamic') {
+                        window.location.href = `/undangan-islamic.html?slug=${slug}`;
                     } else {
                         window.location.href = `/undangan.html?slug=${slug}`;
                     }
