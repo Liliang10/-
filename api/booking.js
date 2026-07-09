@@ -51,7 +51,7 @@ export default async function handler(req, res) {
             const slug = `${cleanPria}-dan-${cleanWanita}-${uniqueId}`;
 
             let fotoPublicUrl = null;
-            const fotoFile = files.foto_prewedding?.[0] || files.foto_prewedding;
+            const fotoFile = files.foto-prewedding?.[0] || files.foto-prewedding;
 
             if (fotoFile && fotoFile.filepath) {
                 const fileData = fs.readFileSync(fotoFile.filepath);
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
                 const fileName = `${slug}-${Date.now()}.${fileExt}`;
 
                 const { data: uploadData, error: uploadError } = await supabase.storage
-                    .from('foto_prewedding')
+                    .from('foto-prewedding')
                     .upload(fileName, fileData, {
                         contentType: fotoFile.mimetype || 'image/jpeg',
                         upsert: true
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
                 if (uploadError) throw uploadError;
 
                 const { data: publicUrlData } = supabase.storage
-                    .from('foto_prewedding')
+                    .from('foto-prewedding')
                     .getPublicUrl(fileName);
 
                 fotoPublicUrl = publicUrlData.publicUrl;
