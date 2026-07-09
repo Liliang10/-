@@ -27,7 +27,7 @@
                 </div>
             </div>
             <button onclick="loadData()" class="flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 text-sm px-4 py-2.5 rounded-xl border border-slate-200 shadow-sm font-semibold transition-all duration-200 active:scale-95">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500 animate-spin-hover" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.253 8H18" />
                 </svg>
                 Refresh Data
@@ -54,7 +54,7 @@
                                 <tr class="bg-slate-50 text-slate-400 uppercase text-[10px] tracking-wider font-bold border-b border-slate-200">
                                     <th class="p-4 pl-6">ID & Klien</th>
                                     <th class="p-4">Slug Undangan</th>
-                                    <th class="p-4">Link Asli</th>
+                                    <th class="p-4">Link Asli (Form)</th>
                                     <th class="p-4">Tanggal Acara</th>
                                     <th class="p-4 pr-6 text-right">Aksi</th>
                                 </tr>
@@ -173,7 +173,13 @@
 
                 tbody.innerHTML = data.map(item => {
                     const tgl = item.tanggal_acara ? new Date(item.tanggal_acara).toLocaleDateString('id-ID', {day:'numeric', month:'short', year:'numeric'}) : '-';
-                    const linkOriginalForm = `${domainAsli}/undangan-modern.html?slug=${item.slug}`;
+                    
+                    let fileTemplateAsli = 'undangan-modern.html';
+                    if (item.tema === 'tradisional') fileTemplateAsli = 'undangan-tradisional.html';
+                    else if (item.tema === 'kartun') fileTemplateAsli = 'undangan-kartun.html';
+                    else if (item.tema === 'islamic') fileTemplateAsli = 'undangan-islamic.html';
+                    
+                    const linkOriginalForm = `${domainAsli}/${fileTemplateAsli}?slug=${item.slug}`;
 
                     return `
                         <tr class="hover:bg-slate-50/80 transition-colors group">
