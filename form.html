@@ -316,12 +316,13 @@
             menuToggleBtn.addEventListener('click', () => {
                 const isHidden = mobileMenu.classList.contains('hidden');
                 if (isHidden) {
+                    menuToggleBtn.classList.remove('hidden');
                     mobileMenu.classList.remove('hidden');
                     hamburgerIcon.classList.add('hidden');
                     closeIcon.classList.remove('hidden');
                 } else {
                     mobileMenu.classList.add('hidden');
-                    hamburgerIcon.remove('hidden');
+                    hamburgerIcon.classList.remove('hidden');
                     closeIcon.classList.add('hidden');
                 }
             });
@@ -332,11 +333,12 @@
         formUndangan.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            const btnSubmit = formUndangan.querySelector('button[type="submit"]');
+            const originalBtnText = btnSubmit ? btnSubmit.innerText : 'Kirim';
+
             const formDataPayload = new FormData(formUndangan);
 
             try {
-                const btnSubmit = formUndangan.querySelector('button[type="submit"]');
-                const originalBtnText = btnSubmit ? btnSubmit.innerText : 'Kirim';
                 if (btnSubmit) {
                     btnSubmit.disabled = true;
                     btnSubmit.innerText = 'Memproses...';
