@@ -46,7 +46,7 @@ export async function onRequestPost(context) {
             const fileBuffer = await fileFoto.arrayBuffer();
 
             const { data: uploadData, error: uploadError } = await supabase.storage
-                .from('undangan-bucket')
+                .from('foto-prewedding')
                 .upload(filePath, fileBuffer, {
                     contentType: fileFoto.type || 'image/jpeg',
                     upsert: true
@@ -58,7 +58,7 @@ export async function onRequestPost(context) {
             }
 
             const { data: publicUrlData } = supabase.storage
-                .from('undangan-bucket')
+                .from('foto-prewedding')
                 .getPublicUrl(filePath);
 
             fotoPublicUrl = publicUrlData.publicUrl;
