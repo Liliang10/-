@@ -8,6 +8,8 @@
   "workers_dev": true,
   "preview_urls": true,
   "assets": {
-    "directory": "."
-  }
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "keep_vars": true
 }
